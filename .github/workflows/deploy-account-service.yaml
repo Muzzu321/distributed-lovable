@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'account-service/**'
+      - 'common-lib/**'
 
 env:
   SERVICE_NAME: account-service
@@ -29,7 +30,14 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 3. Build and Push Docker Image using Google Jib
+      # 3. Build and Install Common Library
+      - name: Build and Install Common Library
+        working-directory: ./common-lib
+        run: |
+          chmod +x mvnw
+          ./mvnw clean install -DskipTests
+
+      # 4. Build and Push Docker Image using Google Jib
       - name: Build and Push Docker Image with Jib
         working-directory: ./${{ env.SERVICE_NAME }}
         run: |
@@ -40,6 +48,6 @@ jobs:
             -Djib.to.auth.username=${{ secrets.DOCKERHUB_USERNAME }} \
             -Djib.to.auth.password=${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 4. Workflow completed
+      # 5. Workflow completed
       - name: Build Completed
         run: echo "${{ env.SERVICE_NAME }} Docker image pushed successfully to Docker Hub."
