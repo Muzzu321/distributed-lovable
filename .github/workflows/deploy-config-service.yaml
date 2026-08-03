@@ -8,7 +8,7 @@ on:
       - 'config-service/**'
 
 env:
-  # Docker Hub image
+  SERVICE_NAME: config-service
   IMAGE_NAME: muzammil7961/lovable-config-service
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
 
       # 3. Build and Push Docker Image using Google Jib
       - name: Build and Push Docker Image with Jib
-        working-directory: ./config-service
+        working-directory: ./${{ env.SERVICE_NAME }}
         run: |
           chmod +x mvnw
           ./mvnw compile jib:build \
@@ -42,4 +42,4 @@ jobs:
 
       # 4. Workflow completed
       - name: Build Completed
-        run: echo "Docker image pushed successfully to Docker Hub."
+        run: echo "${{ env.SERVICE_NAME }} Docker image pushed successfully to Docker Hub."
