@@ -1,0 +1,2 @@
+com.muzammil.distributed_lovable.common_lib.security.SharedSecurityAutoConfiguration
+com.muzammil.distributed_lovable.common_lib.error.SharedExceptionAutoConfiguration
