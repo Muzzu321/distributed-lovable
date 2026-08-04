@@ -43,5 +43,3 @@ jobs:
       # 4. Workflow completed
       - name: Build Completed
         run: echo "${{ env.SERVICE_NAME }} Docker image pushed successfully to Docker Hub."
--Djib.to.auth.username=${{ secrets.DOCKER_USERNAME }} \
--Djib.to.auth.password=${{ secrets.DOCKER_PASSWORD }}
