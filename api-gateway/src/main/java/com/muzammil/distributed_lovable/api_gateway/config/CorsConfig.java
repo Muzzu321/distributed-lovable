@@ -15,15 +15,27 @@ public class CorsConfig {
     @Bean
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
+
         corsConfig.setAllowedOrigins(Arrays.asList(
-                "http://codingshuttle.in",
-                "http://www.codingshuttle.in",
-                "http://localhost:5173"
+                "http://localhost:8081",
+                "http://localhost:5173",
+                "http://127.0.0.1:5173",
+                "http://localhost",
+                "http://127.0.0.1"
         ));
-        corsConfig.setMaxAge(3600L);
-        corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+
+        corsConfig.setAllowedMethods(Arrays.asList(
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "OPTIONS"
+        ));
+
         corsConfig.setAllowedHeaders(List.of("*"));
         corsConfig.setAllowCredentials(true);
+        corsConfig.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfig);
@@ -31,4 +43,3 @@ public class CorsConfig {
         return new CorsWebFilter(source);
     }
 }
-
