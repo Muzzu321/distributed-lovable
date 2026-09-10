@@ -1,129 +1,43 @@
-# AI-Driven Code Generation SaaS Platform
+# 🚀 AI-Driven Code Generation SaaS Platform
 
 ### Lovable / v0.dev-style AI Application Builder
 
-Distributed Lovable is an AI-driven SaaS platform that enables users to generate complete React applications from natural-language prompts.
+> A distributed AI SaaS platform that transforms natural-language prompts into complete React applications, manages project workspaces, and provisions live Kubernetes preview environments.
 
-For example:
-
-> "Build a snake game in React"
-
-The platform processes the request through a distributed Spring Boot microservice architecture, uses Spring AI for AI-powered code generation, persists generated project files, and provisions live Kubernetes-based preview environments.
-
----
-
-## 🚀 Key Capabilities
-
-- 🤖 Generate complete React applications from natural-language prompts
-- ⚡ Stream AI-generated responses in real time using Server-Sent Events (SSE)
-- 💾 Persist generated source code using MinIO and NFS shared volumes
-- ☸️ Provision auto-updating Kubernetes build and preview pods
-- 🌐 Provide live previews through Kubernetes Ingress
-- 👥 Support multi-tenant SaaS workflows
-- 🎟️ Track token quotas and subscription plans
-- 🔐 Provide role-based access control (RBAC)
-- 📈 Scale horizontally using Kubernetes infrastructure
+[![Java](https://img.shields.io/badge/Java-17+-orange)](https://www.java.com/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen)](https://spring.io/projects/spring-boot)
+[![Spring AI](https://img.shields.io/badge/Spring%20AI-LLM%20Integration-blue)](https://spring.io/projects/spring-ai)
+[![React](https://img.shields.io/badge/React-TypeScript-blue)](https://react.dev/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-Container%20Orchestration-326CE5)](https://kubernetes.io/)
+[![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED)](https://www.docker.com/)
 
 ---
 
-## 📊 Performance & Scalability
+## 📌 Overview
 
-The platform was evaluated through instructor-led performance and scalability testing and demonstrated:
+**Distributed Lovable** is an AI-driven full-stack development platform inspired by products such as Lovable and v0.dev.
 
-| Metric | Result |
-|---|---:|
-| Concurrent streaming sessions | **10K+** |
-| Token streaming latency | **<200 ms** |
-| Preview cold-start time | **<2 seconds** |
-| Stream reliability | **99.9%** |
-| Code-generation capacity | **50K+ requests/day** |
-| Throughput scaling | **Linear** |
+The platform allows users to describe an application using natural language, for example:
 
-These results represent the performance targets and test results provided from the platform's instructor-led evaluation.
+> **"Build a snake game in React"**
 
----
+The system processes the request through a distributed Spring Boot architecture, uses Spring AI and OpenRouter for code generation, persists the generated project, and provisions an isolated Kubernetes runtime for a live application preview.
 
-# 🏗️ Architecture
-
-The platform follows a distributed microservice architecture built around Spring Boot and Spring Cloud.
+The core workflow is:
 
 ```text
-                         ┌─────────────────────────┐
-                         │     React Frontend      │
-                         │    project-companion    │
-                         │                         │
-                         │ React + TypeScript      │
-                         │ Vite + Tailwind CSS     │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │      API Gateway        │
-                         │   Spring Cloud Gateway  │
-                         └────────────┬────────────┘
-                                      │
-             ┌────────────────────────┼────────────────────────┐
-             │                        │                        │
-             ▼                        ▼                        ▼
-    ┌─────────────────┐      ┌─────────────────┐      ┌──────────────────┐
-    │ Account Service  │      │ Workspace       │      │ Intelligence     │
-    │                  │      │ Service         │      │ Service          │
-    │ Authentication   │      │ Projects        │      │ AI Generation    │
-    │ Authorization    │      │ Workspaces      │      │ File Editing     │
-    └─────────────────┘      │ Preview Mgmt    │      │ Project Context  │
-                             └────────┬────────┘      └────────┬─────────┘
-                                      │                        │
-                                      │                        ▼
-                                      │                ┌─────────────────┐
-                                      │                │ Spring AI       │
-                                      │                │ + OpenRouter    │
-                                      │                └─────────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │ Kubernetes Runner Pool  │
-                         │                         │
-                         │ Project Preview Pods    │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │      Vite / React       │
-                         │       :5173             │
-                         │                         │
-                         │ Generated Application   │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │      Redis Routing      │
-                         │                         │
-                         │ hostname → runner IP    │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │     Preview Proxy       │
-                         │                         │
-                         │ Dynamic Project Routing │
-                         └────────────┬────────────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────────┐
-                         │      NGINX Ingress      │
-                         └─────────────────────────┘
-
-
-                 Supporting Infrastructure
-        ┌───────────────────────────────────────────────┐
-        │                                               │
-        │ Eureka       → Service Discovery              │
-        │ Config       → Centralized Configuration      │
-        │ PostgreSQL   → Persistent Application Data    │
-        │ pgvector     → Vector Storage                 │
-        │ Kafka        → Event / Messaging              │
-        │ Redis        → Preview Routing                │
-        │ MinIO        → Project Object Storage         │
-        │ NFS          → Shared Project Volumes         │
-        │                                               │
-        └───────────────────────────────────────────────┘
+Natural Language
+       ↓
+AI Code Generation
+       ↓
+Structured File Changes
+       ↓
+Project Workspace
+       ↓
+Persistent Storage
+       ↓
+Kubernetes Preview Runner
+       ↓
+Running React/Vite Application
+       ↓
+Live Preview
