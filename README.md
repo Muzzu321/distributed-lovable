@@ -49,5 +49,4 @@ The platform consists of independent services:
 
 <img width="900" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
-
-<img src="https://github.com/user-attachments/assets/cb874c57-53ad-4cab-9fa7-79c08a580a83" alt="Lovable Clone Architecture" width="700">
+<img width="900" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cb874c57-53ad-4cab-9fa7-79c08a580a83" />
