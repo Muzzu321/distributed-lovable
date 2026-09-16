@@ -96,4 +96,5 @@ The platform consists of independent services:
 
 ## Architecture Diagram
 
-<img src="YOUR_ARCHITECTURE_IMAGE_URL" alt="Lovable Clone Architecture" />" alt="Lovable Clone Architecture" />
+<img src="<img width="636" height="658" alt="Screenshot_16-9-2026_153058_" src="https://github.com/user-attachments/assets/31f10fdf-4439-42f9-a50f-f120fb43f858" />
+" alt="Lovable Clone Architecture" />" alt="Lovable Clone Architecture" />
