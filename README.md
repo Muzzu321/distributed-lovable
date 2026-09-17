@@ -375,8 +375,8 @@ AI generation workflow, and asynchronous Kafka-based communication.
 
 This provides visibility into service behavior and request flow across the
 distributed platform.
-## Kubernetes Deployment
 
+## Kubernetes Deployment
 The platform is deployed as independently managed services within Kubernetes.
 Kubernetes also provides the runtime environment for executing generated
 applications.
@@ -392,10 +392,9 @@ Kubernetes is used for:
 
 The core platform services and generated application workloads are managed
 independently, allowing application execution to remain isolated from the
-platform's backend services.
+platform's backend services. 
 
 ## Tech Stack
-
 | Category | Technologies |
 |---|---|
 | Language | Java |
