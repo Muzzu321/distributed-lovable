@@ -136,8 +136,8 @@ retrieval-augmented generation (RAG).
 9. Server-Sent Events (SSE) stream generation progress and content back to the client.
 ### Generation & Execution Workflow
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
-## RAG & Codebase Context
 
+## RAG & Codebase Context
 The Intelligence Service maintains project-aware context using Qdrant as a
 vector store. This allows subsequent prompts to work against the existing
 codebase instead of treating each generation request as an isolated interaction.
@@ -157,7 +157,6 @@ This allows the model to inspect the current project and generate or modify
 files while maintaining context across iterative development requests.
 
 ### RAG Pipeline
-
 ```text
                     Project Files
                          │
