@@ -352,3 +352,20 @@ service isolation, and multi-tenant application execution.
 | Isolated Execution | Runs generated applications in independent Kubernetes workloads |
 | RBAC | Controls access to projects and workspace resources |
 
+## Observability
+
+The platform includes observability components for monitoring service behavior
+and tracing requests across the distributed architecture.
+
+The observability layer helps track activity across the API Gateway, backend
+services, asynchronous Kafka workflows, AI generation, and execution services.
+
+### Observability Stack
+
+- **Prometheus** — collects application and service metrics
+- **Grafana** — provides dashboards for monitoring system metrics
+- **Zipkin** — provides distributed request tracing across services
+
+The combination of metrics and distributed tracing provides visibility into
+request flow and service behavior across the platform.
+
