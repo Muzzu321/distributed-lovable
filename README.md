@@ -137,6 +137,45 @@ retrieval-augmented generation (RAG).
 ### Generation & Execution Workflow
 
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
+## RAG & Codebase Context
+
+The platform uses Retrieval-Augmented Generation (RAG) to provide the LLM with
+relevant context from the project's existing codebase.
+
+When project files are created or updated, the codebase is chunked and embedded
+before being indexed in Qdrant. During subsequent generation requests, the
+Intelligence Service performs similarity search to retrieve relevant code
+fragments and incorporates them into the LLM context.
+
+This allows the generation workflow to work with existing project files rather
+than relying only on the user's latest prompt.
+
+### RAG Pipeline
+
+```text
+Project Files
+     |
+     v
+Chunking
+     |
+     v
+Embeddings
+     |
+     v
+Qdrant Vector DB
+     |
+     | Similarity Search
+     v
+Relevant Code Context
+     |
+     v
+Intelligence Service
+     |
+     v
+LLM
+     |
+     v
+Generated / Updated Code
 
 
 
