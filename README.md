@@ -137,17 +137,35 @@ retrieval-augmented generation (RAG).
 ### Generation & Execution Workflow
 
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
+
 ## RAG & Codebase Context
 
-The Intelligence Service uses Qdrant to index the project codebase and retrieve
-relevant files during AI generation.
+The Intelligence Service uses Qdrant to keep a searchable representation of
+the project codebase.
 
-Project files are chunked and embedded before being stored in Qdrant. When a
-user sends a prompt, the Intelligence Service performs a similarity search and
-uses the retrieved code as context for the LLM.
+When files are created or updated, the content is chunked, embedded, and
+stored in Qdrant. During an AI request, the service performs a similarity
+search and retrieves relevant code before sending the context to the LLM.
 
-The service can also use `list_files` and `get_file_content` to access files
-from the current workspace. Generated file content is then sent back through
-the workspace workflow and persisted for the project.
+The AI service can also access project files through tools such as
+`list_files` and `get_file_content`, allowing the model to work with the
+current workspace instead of only the chat prompt.
 
-<img width="1200" alt="RAG and AI Code Generation Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
+### Flow
+
+```text
+Project Files
+     ↓
+Chunk + Embed
+     ↓
+Qdrant Vector DB
+     ↓
+Similarity Search
+     ↓
+Relevant Code Context
+     ↓
+Intelligence Service
+     ↓
+    LLM
+     ↓
+Generated / Updated Files
