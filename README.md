@@ -117,5 +117,25 @@ application execution.
 | Discovery Service | Service registration and discovery |
 
 <img width="1200" height="747" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
+## AI Code Generation Flow
+
+The application generation workflow is coordinated by the Intelligence Service,
+which combines LLM-based generation with project context, chat history, and
+retrieval-augmented generation (RAG).
+
+1. The user submits a natural-language prompt through the Spring Cloud API Gateway.
+2. The Intelligence Service retrieves relevant conversation and project context.
+3. Qdrant performs similarity search over chunked and embedded project code.
+4. The LLM uses the retrieved context and available file tools to generate or
+   modify application code.
+5. Generated file content is published through Kafka and persisted using MinIO.
+6. The Workspace Service manages the generated project files and workspace state.
+7. The Execution Service creates an isolated Kubernetes workload for the project.
+8. The generated application is executed and exposed through a live preview.
+9. Server-Sent Events (SSE) stream generation progress and content back to the client.
+
+### Generation & Execution Workflow
+
+<img width="1200" height="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
 
