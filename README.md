@@ -361,20 +361,20 @@ multi-tenant resource management.
 
 ## Observability
 
-The platform includes observability components for monitoring service behavior
-and tracing requests across the distributed architecture.
+The platform includes metrics and distributed tracing to monitor service
+behavior across the microservice architecture.
 
-The observability layer helps track activity across the API Gateway, backend
-services, asynchronous Kafka workflows, AI generation, and execution services.
+Observability covers the request path across the API Gateway, backend services,
+AI generation workflow, and asynchronous Kafka-based communication.
 
 ### Observability Stack
 
 - **Prometheus** — collects application and service metrics
-- **Grafana** — provides dashboards for monitoring system metrics
+- **Grafana** — provides dashboards for system and service metrics
 - **Zipkin** — provides distributed request tracing across services
 
-The combination of metrics and distributed tracing provides visibility into
-request flow and service behavior across the platform.
+This provides visibility into service behavior and request flow across the
+distributed platform.
 ## Kubernetes Deployment
 
 The platform is deployed as independently managed services within Kubernetes.
