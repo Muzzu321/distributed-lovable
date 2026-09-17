@@ -36,6 +36,52 @@ The system focuses on the distributed-systems problems involved in building an A
 - Object storage and persistent file management
 - Service discovery and centralized configuration
 - Distributed tracing and observability
+## Key Features
+
+### AI Application Generation
+
+- Generate complete React applications from natural-language prompts
+- Stream AI responses and generated content in real time using Server-Sent Events (SSE)
+- Use Spring AI to integrate LLM-based code generation
+- Maintain conversation context and recent chat history during generation
+
+### Intelligent Codebase Context
+
+- Index generated project files using chunking and embeddings
+- Store vector representations in Qdrant
+- Perform similarity search to retrieve relevant codebase context
+- Use retrieved context to improve subsequent AI-generated code
+
+### Workspace & Project Management
+
+- Manage multiple workspaces and projects
+- Create, update, and persist project files
+- Store generated files and project artifacts using MinIO
+- Publish file-update events through Kafka for asynchronous processing
+
+### Code Execution & Live Preview
+
+- Execute generated applications in isolated Kubernetes workloads
+- Create independent execution environments for projects
+- Support package installation and application build/runtime execution
+- Provide live previews of generated applications
+
+### Authentication & SaaS Controls
+
+- JWT-based authentication and authorization
+- Role-based access control (RBAC)
+- Multi-tenant workspace isolation
+- Subscription and token-quota management
+- Account and billing integration
+
+### Distributed System Infrastructure
+
+- Spring Cloud API Gateway for request routing
+- Eureka-based service discovery
+- Centralized configuration using Config Server
+- Kafka-based asynchronous communication
+- Redis for caching and runtime state
+- PostgreSQL for service-specific persistent data  
 
 ## Architecture Diagram
 
