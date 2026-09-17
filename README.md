@@ -215,3 +215,31 @@ Key persistence areas include:
 
 <img width="1200" alt="data-model-erd-clear" src="https://github.com/user-attachments/assets/f16db0b5-6dc7-434e-81d0-d7abd6e88ec4" />
 
+## Event-Driven Architecture
+
+The platform uses Apache Kafka for asynchronous communication between services.
+File and project updates can be propagated through events without requiring
+every downstream operation to be handled synchronously.
+
+The Workspace Service manages project files and publishes file-update events,
+while downstream services can consume these events for asynchronous processing.
+
+### Event Flow
+
+```text
+Workspace Service
+        │
+        │ File Update Event
+        ▼
+    Kafka Topic
+        │
+        ▼
+Intelligence Service
+        │
+        ▼
+Chunking + Embedding
+        │
+        ▼
+Qdrant
+```
+
