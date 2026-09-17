@@ -342,10 +342,9 @@ Backend Services
   └── Execution Service
 ```
 ## Distributed System Design
-
 The platform uses several architectural patterns and mechanisms to address
-the challenges of distributed AI generation, asynchronous processing,
-service isolation, and multi-tenant application execution.
+distributed AI generation, asynchronous processing, service isolation, and
+multi-tenant resource management.
 
 | Pattern / Mechanism | Purpose |
 |---|---|
