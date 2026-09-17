@@ -387,3 +387,23 @@ The core platform services and generated application workloads are managed
 independently, allowing application execution to remain isolated from the
 platform's backend services.
 
+## Tech Stack
+
+| Category | Technologies |
+|---|---|
+| Language | Java |
+| Framework | Spring Boot, Spring Cloud |
+| AI Integration | Spring AI |
+| API | REST, Server-Sent Events (SSE) |
+| Messaging | Apache Kafka |
+| Vector Database | Qdrant |
+| Database | PostgreSQL |
+| Object Storage | MinIO |
+| Cache | Redis |
+| Security | Spring Security, JWT |
+| Service Discovery | Eureka |
+| Configuration | Spring Cloud Config Server |
+| Service Communication | REST, OpenFeign |
+| Containers | Docker |
+| Orchestration | Kubernetes |
+| Build | Maven |
