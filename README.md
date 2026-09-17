@@ -136,6 +136,7 @@ retrieval-augmented generation (RAG).
 
 ### Generation & Execution Workflow
 
-<img width="1200" height="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
+<img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
+
 
 
