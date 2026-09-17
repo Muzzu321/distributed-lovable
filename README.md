@@ -395,6 +395,7 @@ independently, allowing application execution to remain isolated from the
 platform's backend services. 
 
 ## Tech Stack
+
 | Category | Technologies |
 |---|---|
 | Language | Java |
