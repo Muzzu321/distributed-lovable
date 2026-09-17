@@ -302,4 +302,34 @@ SSE Connection
      │
      ▼
 Client
+```
+## Authentication & Multi-Tenancy
+
+The platform uses JWT-based authentication and role-based access control (RBAC)
+to secure API access and isolate user and project resources.
+
+Authentication is handled at the API Gateway before requests are routed to the
+appropriate backend service.
+
+Projects and workspaces maintain ownership and membership information, allowing
+access to be controlled according to the user's assigned role.
+
+### Access Flow
+
+```text
+Client
+  │
+  │ JWT
+  ▼
+API Gateway
+  │
+  │ Authentication
+  ▼
+Backend Services
+  │
+  ├── Account Service
+  ├── Workspace Service
+  ├── Chat Service
+  ├── Intelligence Service
+  └── Execution Service
 
