@@ -140,32 +140,55 @@ retrieval-augmented generation (RAG).
 
 ## RAG & Codebase Context
 
-The Intelligence Service uses Qdrant to keep a searchable representation of
-the project codebase.
+The Intelligence Service maintains project-aware context using Qdrant as a
+vector store. This allows subsequent prompts to operate against the existing
+codebase rather than treating every generation request as an isolated prompt.
 
-When files are created or updated, the content is chunked, embedded, and
-stored in Qdrant. During an AI request, the service performs a similarity
-search and retrieves relevant code before sending the context to the LLM.
+When project files are created or modified, the file content is processed into
+chunks, embedded, and indexed in Qdrant. During a generation request, the
+Intelligence Service performs semantic similarity search to retrieve relevant
+code context.
 
-The AI service can also access project files through tools such as
-`list_files` and `get_file_content`, allowing the model to work with the
-current workspace instead of only the chat prompt.
+The generation workflow combines three sources of context:
 
-### Flow
+- **Project context** retrieved from Qdrant
+- **Conversation context** from recent chat history
+- **Current workspace state** accessed through file tools
+
+The LLM can use tools such as `list_files` and `get_file_content` to inspect
+the current project before generating or modifying files.
+
+### RAG Pipeline
 
 ```text
 Project Files
-     ↓
-Chunk + Embed
-     ↓
-Qdrant Vector DB
-     ↓
-Similarity Search
-     ↓
-Relevant Code Context
-     ↓
-Intelligence Service
-     ↓
-    LLM
-     ↓
-Generated / Updated Files
+      │
+      ▼
+Chunking + Embedding
+      │
+      ▼
+Qdrant Vector Store
+      │
+      │ semantic similarity search
+      ▼
+Relevant Project Context
+      │
+      ├───────────────┐
+      │               │
+      ▼               ▼
+Chat History     System Prompt
+      │               │
+      └───────┬───────┘
+              ▼
+      Intelligence Service
+              │
+              ▼
+             LLM
+        ┌─────┴─────┐
+        │           │
+        ▼           ▼
+   File Tools   Code Generation
+        │           │
+        └─────┬─────┘
+              ▼
+      Generated / Updated Files
