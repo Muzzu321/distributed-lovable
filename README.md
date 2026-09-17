@@ -332,4 +332,23 @@ Backend Services
   ├── Chat Service
   ├── Intelligence Service
   └── Execution Service
+```
+## Distributed System Design
+
+The platform uses several architectural patterns and mechanisms to address
+the challenges of distributed AI generation, asynchronous processing,
+service isolation, and multi-tenant application execution.
+
+| Pattern / Mechanism | Purpose |
+|---|---|
+| API Gateway | Provides a single entry point for authentication and request routing |
+| Service Discovery | Enables dynamic service registration and discovery through Eureka |
+| Event-Driven Communication | Decouples asynchronous file and project update processing |
+| RAG | Retrieves relevant project context for AI generation |
+| Tool Calling | Allows the LLM to inspect the current workspace and project files |
+| Server-Sent Events | Streams AI generation output to the client in real time |
+| Service-Owned Data | Separates persistent data across service boundaries |
+| Object Storage | Stores generated project files and application artifacts |
+| Isolated Execution | Runs generated applications in independent Kubernetes workloads |
+| RBAC | Controls access to projects and workspace resources |
 
