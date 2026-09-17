@@ -242,4 +242,35 @@ Chunking + Embedding
         ▼
 Qdrant
 ```
+## Code Execution & Isolation
+
+Generated applications are executed through the Execution Service in isolated
+Kubernetes workloads rather than inside the core application services.
+
+The Execution Service manages the runtime environment required to build and
+run generated React applications, keeping generated workloads separated from
+the platform's backend services.
+
+### Execution Flow
+
+```text
+Generated Project
+       │
+       ▼
+Workspace Service
+       │
+       ▼
+      MinIO
+       │
+       ▼
+Execution Service
+       │
+       ▼
+Kubernetes Workload
+       │
+       ▼
+React Application
+       │
+       ▼
+Live Preview
 
