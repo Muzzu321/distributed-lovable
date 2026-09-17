@@ -1,49 +1,41 @@
-# Lovable Clone
+# Distributed AI Code Generation Platform
 
-An AI-powered SaaS platform inspired by Lovable/v0.dev that generates complete React applications from natural language prompts.
+A distributed, Kubernetes-native SaaS platform that uses Large Language Models to generate, modify, and execute complete React applications from natural-language prompts.
 
-## Features
+The platform is designed around independently deployable microservices for AI orchestration, workspace management, code execution, authentication, billing, and asynchronous event processing.
 
-- Generate React applications from natural language prompts
-- Real-time AI response streaming using SSE
-- AI-powered code generation using Spring AI
-- Workspace and project management
-- RAG-based codebase context using Qdrant
-- Codebase chunking, embedding, and similarity search
-- File generation and persistence using MinIO
-- Code execution in isolated Kubernetes pods
-- Live previews for generated applications
-- JWT authentication and authorization
-- Token quota tracking and subscription plans
-- RBAC for multi-tenant SaaS support
-- Event-driven communication using Kafka
+Users can describe an application in natural language, receive AI-generated source code through a streaming interface, preview the generated application, and iterate on the project through subsequent prompts.
 
-## Architecture
+## What It Does
 
-The platform consists of independent services:
+The platform provides an end-to-end workflow for AI-assisted application development:
 
-- API Gateway
-- Account Service
-- Workspace Service
-- Intelligence Service
-- Chat Service
-- Execution Service
-- Config Service
-- Discovery Service
+1. User submits a natural-language application prompt.
+2. API Gateway authenticates and routes the request.
+3. Intelligence Service orchestrates the LLM interaction and application generation.
+4. RAG retrieves relevant project and codebase context from Qdrant.
+5. Generated files are persisted through the Workspace Service and MinIO.
+6. File updates are propagated asynchronously through Kafka.
+7. Execution Service creates isolated Kubernetes workloads for running generated applications.
+8. The generated application is exposed through a live preview environment.
+9. Chat history and project state are persisted for subsequent iterations.
 
-### Technologies
+## Engineering Focus
 
-- Java & Spring Boot
-- Spring AI
-- Spring Cloud
-- Apache Kafka
-- Qdrant
-- MinIO
-- Kubernetes
-- Docker
-- JWT
-- SSE
-- NFS
+The system focuses on the distributed-systems problems involved in building an AI code-generation platform:
+
+- Distributed microservice architecture
+- LLM orchestration and context management
+- Retrieval-Augmented Generation (RAG)
+- Real-time streaming with Server-Sent Events (SSE)
+- Event-driven communication with Apache Kafka
+- Isolated code execution using Kubernetes
+- Multi-tenant workspace and project management
+- JWT-based authentication and authorization
+- Subscription and token-quota management
+- Object storage and persistent file management
+- Service discovery and centralized configuration
+- Distributed tracing and observability
 
 ## Architecture Diagram
 
