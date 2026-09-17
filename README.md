@@ -190,3 +190,26 @@ files while maintaining context across iterative development requests.
                    └─────┬─────┘
                          ▼
               Generated / Updated Files
+
+## Data Model & Persistence
+The platform uses service-owned PostgreSQL data to persist users, subscriptions,
+projects, workspace membership, project files, previews, and chat sessions.
+
+The data model separates account, project, workspace, and conversation concerns
+while maintaining relationships between users and the projects they own or
+participate in.
+
+Key persistence areas include:
+
+- **Users & Accounts** — user identity, authentication metadata, and account information
+- **Subscriptions & Plans** — subscription state, plans, limits, and billing identifiers
+- **Projects** — project metadata, ownership, visibility, and lifecycle
+- **Project Membership** — workspace/project access and member roles
+- **Project Files** — generated files and their MinIO object references
+- **Chat Sessions & Messages** — conversation history and LLM interaction data
+- **Previews** — generated application preview environments and runtime state
+- **Usage Logs** — token usage and AI-generation activity
+
+### Entity Relationship Diagram
+
+<img width="1200" alt="Platform Data Model and Entity Relationships" src="https://github.com/user-attachments/assets/YOUR_ERD_IMAGE_ID" />
