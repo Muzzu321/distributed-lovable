@@ -117,8 +117,9 @@ application execution.
 | Discovery Service | Service registration and discovery |
 
 <img width="1200" height="747" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
-## AI Code Generation Flow
 
+
+## AI Code Generation Flow
 The application generation workflow is coordinated by the Intelligence Service,
 which combines LLM-based generation with project context, chat history, and
 retrieval-augmented generation (RAG).
@@ -133,9 +134,7 @@ retrieval-augmented generation (RAG).
 7. The Execution Service creates an isolated Kubernetes workload for the project.
 8. The generated application is executed and exposed through a live preview.
 9. Server-Sent Events (SSE) stream generation progress and content back to the client.
-
 ### Generation & Execution Workflow
-
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
 
 ## RAG & Codebase Context
