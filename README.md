@@ -136,58 +136,58 @@ retrieval-augmented generation (RAG).
 9. Server-Sent Events (SSE) stream generation progress and content back to the client.
 ### Generation & Execution Workflow
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
-
 ## RAG & Codebase Context
 
 The Intelligence Service maintains project-aware context using Qdrant as a
-vector store. This allows subsequent prompts to operate against the existing
-codebase rather than treating every generation request as an isolated prompt.
+vector store. This allows subsequent prompts to work against the existing
+codebase instead of treating each generation request as an isolated interaction.
 
-When project files are created or modified, the file content is processed into
-chunks, embedded, and indexed in Qdrant. During a generation request, the
-Intelligence Service performs semantic similarity search to retrieve relevant
-code context.
+When project files are created or updated, the codebase is chunked, embedded,
+and indexed in Qdrant. During a generation request, the Intelligence Service
+performs a similarity search to retrieve relevant project context.
 
-The generation workflow combines three sources of context:
+The LLM generation process combines:
 
-- **Project context** retrieved from Qdrant
-- **Conversation context** from recent chat history
-- **Current workspace state** accessed through file tools
+- **Project context** retrieved through Qdrant similarity search
+- **Conversation history** from the current chat session
+- **System instructions** defining the generation behavior
+- **Workspace tools** such as `list_files` and `get_file_content`
 
-The LLM can use tools such as `list_files` and `get_file_content` to inspect
-the current project before generating or modifying files.
+This allows the model to inspect the current project and generate or modify
+files while maintaining context across iterative development requests.
 
 ### RAG Pipeline
 
 ```text
-Project Files
-      │
-      ▼
-Chunking + Embedding
-      │
-      ▼
-Qdrant Vector Store
-      │
-      │ semantic similarity search
-      ▼
-Relevant Project Context
-      │
-      ├───────────────┐
-      │               │
-      ▼               ▼
-Chat History     System Prompt
-      │               │
-      └───────┬───────┘
-              ▼
-      Intelligence Service
-              │
-              ▼
-             LLM
-        ┌─────┴─────┐
-        │           │
-        ▼           ▼
-   File Tools   Code Generation
-        │           │
-        └─────┬─────┘
-              ▼
-      Generated / Updated Files
+                    Project Files
+                         │
+                         ▼
+                 Chunk + Embed
+                         │
+                         ▼
+                Qdrant Vector DB
+                         │
+                         │ Similarity Search
+                         ▼
+              Relevant Code Context
+                         │
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+        ▼                ▼                ▼
+   Chat History    System Prompt     Workspace Tools
+        │                │                │
+        └────────────────┼────────────────┘
+                         ▼
+                Intelligence Service
+                         │
+                         ▼
+                        LLM
+                   ┌─────┴─────┐
+                   │           │
+                   ▼           ▼
+              File Tools   Code Generation
+                   │           │
+                   └─────┬─────┘
+                         ▼
+              Generated / Updated Files
