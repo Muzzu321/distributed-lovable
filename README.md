@@ -368,4 +368,22 @@ services, asynchronous Kafka workflows, AI generation, and execution services.
 
 The combination of metrics and distributed tracing provides visibility into
 request flow and service behavior across the platform.
+## Kubernetes Deployment
+
+The platform is deployed as independently managed services within Kubernetes.
+Kubernetes also provides the runtime environment for executing generated
+applications.
+
+Kubernetes is used for:
+
+- Deploying and managing platform microservices
+- Service-to-service communication
+- Managing application lifecycle
+- Running isolated generated application workloads
+- Scaling services independently
+- Providing workload isolation for generated applications
+
+The core platform services and generated application workloads are managed
+independently, allowing application execution to remain isolated from the
+platform's backend services.
 
