@@ -134,23 +134,24 @@ storage respectively.
 <img width="1200" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
 ## AI Code Generation Flow
-The application generation workflow is coordinated by the Intelligence Service,
-which combines LLM-based generation with project context, chat history, and
-retrieval-augmented generation (RAG).
 
-1. The user submits a natural-language prompt through the Spring Cloud API Gateway.
-2. The Intelligence Service retrieves relevant conversation and project context.
-3. Qdrant performs similarity search over chunked and embedded project code.
-4. The LLM uses the retrieved context and available file tools to generate or
-   modify application code.
-5. Generated file content is published through Kafka and persisted using MinIO.
-6. The Workspace Service manages the generated project files and workspace state.
-7. The Execution Service creates an isolated Kubernetes workload for the project.
-8. The generated application is executed and exposed through a live preview.
-9. Server-Sent Events (SSE) stream generation progress and content back to the client.
+The Intelligence Service coordinates the end-to-end application generation
+workflow, combining user prompts, conversation context, project context, and
+workspace state.
+
+1. The user submits a natural-language prompt through the API Gateway.
+2. The Intelligence Service loads the relevant conversation and project context.
+3. RAG retrieves relevant codebase information from Qdrant.
+4. The LLM generates or modifies the requested application code.
+5. Generated file changes are persisted through the Workspace Service.
+6. File updates are propagated asynchronously through Kafka.
+7. The Execution Service creates an isolated Kubernetes workload.
+8. The generated application is built and executed.
+9. The client receives generation output through Server-Sent Events (SSE).
+
 ### Generation & Execution Workflow
-<img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
 
+<img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
 ## RAG & Codebase Context
 The Intelligence Service maintains project-aware context using Qdrant as a
 vector store. This allows subsequent prompts to work against the existing
