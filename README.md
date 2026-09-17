@@ -5,6 +5,23 @@ A distributed, Kubernetes-native SaaS platform that uses Large Language Models t
 The platform is designed around independently deployable microservices for AI orchestration, workspace management, code execution, authentication, billing, and asynchronous event processing.
 
 Users can describe an application in natural language, receive AI-generated source code through a streaming interface, preview the generated application, and iterate on the project through subsequent prompts.
+## Quick Navigation
+
+- [What It Does](#what-it-does)
+- [Engineering Focus](#engineering-focus)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [AI Code Generation Flow](#ai-code-generation-flow)
+- [RAG & Codebase Context](#rag--codebase-context)
+- [Data Model & Persistence](#data-model--persistence)
+- [Event-Driven Architecture](#event-driven-architecture)
+- [Code Execution & Isolation](#code-execution--isolation)
+- [Real-Time AI Streaming](#real-time-ai-streaming)
+- [Authentication & Multi-Tenancy](#authentication--multi-tenancy)
+- [Distributed System Design](#distributed-system-design)
+- [Observability](#observability)
+- [Kubernetes Deployment](#kubernetes-deployment)
+- [Tech Stack](#tech-stack)
 
 ## What It Does
 
