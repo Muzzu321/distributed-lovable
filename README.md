@@ -104,21 +104,19 @@ The system focuses on the distributed-systems problems involved in building an A
 
 The platform follows a distributed microservice architecture with independently
 deployable services for authentication, AI orchestration, workspace management,
-and code execution.
+conversation management, and code execution.
 
-Client requests enter through the Spring Cloud API Gateway, which handles JWT
-authentication and routes requests to the appropriate backend service through
-Eureka service discovery.
+Client requests enter through the API Gateway, which handles authentication and
+request routing through Eureka service discovery.
 
-The Intelligence Service coordinates AI interactions, including LLM requests,
-conversation context, and code generation. The Workspace Service manages
-projects and generated files, while Kafka provides asynchronous event
-communication between services.
+The Intelligence Service coordinates LLM interactions and code generation.
+Workspace and Chat Services manage project files, workspace state, and
+conversation data. The Execution Service manages isolated Kubernetes workloads
+for running generated applications.
 
-PostgreSQL provides persistent storage for service-specific data, MinIO stores
-project files and generated artifacts, and Redis provides caching and runtime
-state. Kubernetes manages service deployment and isolated workloads used for
-application execution.
+Kafka provides asynchronous communication between services, while PostgreSQL,
+Redis, Qdrant, and MinIO provide persistence, caching, vector search, and object
+storage respectively.
 
 ### Service Components
 
@@ -133,8 +131,7 @@ application execution.
 | Config Service | Centralized service configuration |
 | Discovery Service | Service registration and discovery |
 
-<img width="1200" height="747" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
-
+<img width="1200" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
 ## AI Code Generation Flow
 The application generation workflow is coordinated by the Intelligence Service,
