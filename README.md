@@ -116,6 +116,6 @@ application execution.
 | Config Service | Centralized service configuration |
 | Discovery Service | Service registration and discovery |
 
-<img width="900" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
+<img width="1200" height="747" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
-<img width="900" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cb874c57-53ad-4cab-9fa7-79c08a580a83" />
+
