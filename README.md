@@ -83,7 +83,38 @@ The system focuses on the distributed-systems problems involved in building an A
 - Redis for caching and runtime state
 - PostgreSQL for service-specific persistent data  
 
-## Architecture Diagram
+## Architecture
+
+The platform follows a distributed microservice architecture with independently
+deployable services for authentication, AI orchestration, workspace management,
+and code execution.
+
+Client requests enter through the Spring Cloud API Gateway, which handles JWT
+authentication and routes requests to the appropriate backend service through
+Eureka service discovery.
+
+The Intelligence Service coordinates AI interactions, including LLM requests,
+conversation context, and code generation. The Workspace Service manages
+projects and generated files, while Kafka provides asynchronous event
+communication between services.
+
+PostgreSQL provides persistent storage for service-specific data, MinIO stores
+project files and generated artifacts, and Redis provides caching and runtime
+state. Kubernetes manages service deployment and isolated workloads used for
+application execution.
+
+### Service Components
+
+| Service | Responsibility |
+|---|---|
+| API Gateway | Request routing, authentication, and service entry point |
+| Account Service | User accounts, authentication, subscriptions, and billing |
+| Intelligence Service | LLM orchestration, AI context, and code generation |
+| Workspace Service | Projects, files, and workspace lifecycle |
+| Chat Service | Conversation and chat-session management |
+| Execution Service | Application execution and isolated runtime workloads |
+| Config Service | Centralized service configuration |
+| Discovery Service | Service registration and discovery |
 
 <img width="900" alt="Lovable Clone Architecture" src="https://github.com/user-attachments/assets/cdce4336-f220-40fc-b487-f71e141ba57e" />
 
