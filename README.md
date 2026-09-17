@@ -190,8 +190,9 @@ files while maintaining context across iterative development requests.
                    └─────┬─────┘
                          ▼
               Generated / Updated Files
-
+```
 ## Data Model & Persistence
+
 The platform uses service-owned PostgreSQL data to persist users, subscriptions,
 projects, workspace membership, project files, previews, and chat sessions.
 
@@ -212,4 +213,5 @@ Key persistence areas include:
 
 ### Entity Relationship Diagram
 
-<img width="1200" alt="Platform Data Model and Entity Relationships" src="https://github.com/user-attachments/assets/YOUR_ERD_IMAGE_ID" />
+<img width="1200" alt="data-model-erd-clear" src="https://github.com/user-attachments/assets/f16db0b5-6dc7-434e-81d0-d7abd6e88ec4" />
+
