@@ -152,8 +152,8 @@ workspace state.
 ### Generation & Execution Workflow
 
 <img width="1200" alt="AI Code Generation and Execution Flow" src="https://github.com/user-attachments/assets/27e480f6-77b8-44ac-88cb-2e62f72e6b61" />
-## RAG & Codebase Context
 
+## RAG & Codebase Context
 The Intelligence Service maintains project-aware context using Qdrant as a
 vector store. This allows subsequent prompts to work against the existing
 codebase instead of treating each generation request as an isolated interaction.
@@ -173,7 +173,6 @@ The LLM can inspect the current project and use the retrieved context when
 generating or modifying application files.
 
 ### RAG Pipeline
-
 ```text
 Project Files
       │
@@ -205,8 +204,8 @@ Chat History    System Instructions
               ▼
       Generated / Updated Files
 ```
-## Data Model & Persistence
 
+## Data Model & Persistence
 The platform uses service-owned PostgreSQL data to persist users, subscriptions,
 projects, workspace membership, project files, previews, and chat sessions.
 
