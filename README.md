@@ -287,15 +287,13 @@ React Application
 Live Preview
 ```
 ## Real-Time AI Streaming
+The platform uses Server-Sent Events (SSE) to stream AI generation output from
+the backend to the client in real time.
 
-The platform uses Server-Sent Events (SSE) to stream AI generation responses
-from the backend to the client in real time.
-
-Instead of waiting for the complete LLM response and generated application to
-finish, the client can receive generation output progressively.
+Instead of waiting for the complete LLM response, the client receives streamed
+generation output while the request is being processed.
 
 ### Streaming Flow
-
 ```text
 User Prompt
      │
@@ -308,7 +306,7 @@ Intelligence Service
      ▼
       LLM
      │
-     │ streamed response
+     │ Streamed Response
      ▼
 SSE Connection
      │
